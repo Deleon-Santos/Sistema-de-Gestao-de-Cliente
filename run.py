@@ -6,8 +6,8 @@
 import customtkinter as ctk
 from tkinter import * 
 from tkinter import messagebox
-import bd_gestao as bd
-import validar_entradas as validar
+import model.bd_gestao as bd
+import src.validar_entradas as validar
 
 
 # class que define a aparencia
@@ -111,7 +111,7 @@ class Janela(ctk.CTk):
         frame_titulo = ctk.CTkFrame(self, width=650 , height=50, corner_radius=10,border_width=2 ,border_color= 'teal', bg_color='teal',fg_color="teal").place(x=90, y=60)
         label_titulo = ctk.CTkLabel(self, text="GESTÃO DE PESSOAS", font=('ariel',30), text_color=['#000','#fff'],bg_color='transparent',fg_color='transparent').place(x=250, y=70)
         label_nome = ctk.CTkLabel(self,text='Nome Completo', text_color=['#000','#fff'],font=('ariel',15)).place(x=90, y=150)
-        entry_nome = ctk.CTkEntry(self, textvariable=nome_value,font=('ariel',20),width=480).place(x=90,y=180)
+        entry_nome = ctk.CTkEntry(self, textvariable=nome_value,font=('ariel',20),width=480, placeholder_text='9.99999999').place(x=90,y=180)
         label_tel = ctk.CTkLabel(self,text='Tel/Celular',text_color=['#000','#fff'],font=('ariel',15)).place(x=590, y=150)
         entry_tel = ctk.CTkEntry(self,textvariable=tel_value, font=('ariel',20),width=150).place(x=590,y=180)
         label_mail = ctk.CTkLabel(self,text='E-mail', font=('ariel',15),text_color=['#000','#fff']).place(x=90,y=220)

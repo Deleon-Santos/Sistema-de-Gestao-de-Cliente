@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import connect
-import Gestao_XLSX as gerar
+import src.Gestao_XLSX as gerar
 
 #função para conectar oa  bd
 def conexao_bd():

@@ -85,6 +85,7 @@ def validar_tel(tel):
     campos_nulos.append('tel')
     print(tel)
     return False
+
 def validacao(nome,idade,tel,genero,rua,numero,cep,email,bairro,cidade,uf):
     validar_nome(nome)
     validar_idade(idade)
@@ -102,4 +103,4 @@ def validacao(nome,idade,tel,genero,rua,numero,cep,email,bairro,cidade,uf):
     if not campos_nulos:
         return True
     else:
-        return f'Campos nao validades: "{','.join(campos_nulos)}"'
+        return f"Campos nao validades: {', '.join(campos_nulos)}"
