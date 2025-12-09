@@ -48,7 +48,8 @@ def validar_numero(numero):
 
 def validar_cep(cep):
     cep = str(cep).replace('-','')
-    if len(cep)==8:
+    if len(cep)==8 and cep.isdigit():
+        
         return 
     campos_nulos.append('cep')
     return False
@@ -72,19 +73,21 @@ def validar_cidade(cidade):
     return 
 
 def validar_uf(uf):
-    if uf != None:
+    if uf != None and len(uf)==2   :
         return True
     campos_nulos.append('uf')
     return False
 
+import re
+
 def validar_tel(tel):
-    tel_valido = re.search(r'^[0-9]{11}$',tel)
-    if tel_valido:
-        
-        return
-    campos_nulos.append('tel')
-    print(tel)
+    if re.fullmatch(r'[0-9]{9}', tel):
+        return True  # telefone válido
+
+    campos_nulos.append('telefone inválido')
+    print(f"Telefone inválido: {tel}")
     return False
+
 
 def validacao(nome,idade,tel,genero,rua,numero,cep,email,bairro,cidade,uf):
     validar_nome(nome)
