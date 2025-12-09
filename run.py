@@ -28,6 +28,7 @@ class Janela(ctk.CTk):
     def layout(self):
         self.title('Gestão de Clientes')
         self.geometry('840x640')
+        self.resizable(False,False)
         
 
     #configuração dos modos de aparencia
@@ -39,45 +40,32 @@ class Janela(ctk.CTk):
     #frame onde vai rodar o sistema vais receber todos os entrys e labels e botões 
     def frame_master(self):
         def salvar():
-             
-
-            nome = nome_value.get() 
-            
+            nome = nome_value.get()       
             tel=tel_value.get()
-
             idade=idade_value.get()
-            
-            email=email_value.get()
-            
+            email=email_value.get()    
             genero=entry_genero.get()
-                
-
             cep=cep_value.get()
-
             rua=rua_value.get()
-            
             numero=numero_value.get()
-            
             complemento=complemento_value.get()
-            bairro=bairro_value.get()
-            cidade=cidade_value.get()
+            bairro=bairro_value.get() 
+            cidade=cidade_value.get() 
             uf=uf_value.get()
+
             informacao_validada = validar.validacao(nome,idade,tel,genero,rua,numero,cep,email,bairro,cidade,uf)
             if informacao_validada != True:
                 messagebox.showinfo(title="erro", message=f'{informacao_validada} não foram preenchidos')
                 return
+            
             def mostrar_info(pessoa):
                 resposta=bd.criar_tabela_gestao(pessoa)
                 messagebox.showinfo(title='documento salvo',message=f'{resposta}')
                 
-            mostrar_info(pessoa=[nome,tel,idade,email,genero,cep,rua,numero,complemento,bairro,cidade,uf])
+            mostrar_info(pessoa=[nome.capitalize(),tel,idade,email,genero,cep,rua.capitalize(),numero,complemento,bairro.capitalize(),cidade.capitalize(),uf.upper()])
             return
             
         
-                
-            
-           
-
         #função para limpa os resultados
         def limpar():
             nome_value.set('')
@@ -109,7 +97,7 @@ class Janela(ctk.CTk):
         #obs_value = StringVar()
         
         frame_titulo = ctk.CTkFrame(self, width=650 , height=50, corner_radius=10,border_width=2 ,border_color= 'teal', bg_color='teal',fg_color="teal").place(x=90, y=60)
-        label_titulo = ctk.CTkLabel(self, text="GESTÃO DE PESSOAS", font=('ariel',30), text_color=['#000','#fff'],bg_color='transparent',fg_color='transparent').place(x=250, y=70)
+        label_titulo = ctk.CTkLabel(self, text="GESTÃO DE PESSOAS", font=('ariel',30), text_color=['#000','#fff']).place(x=250, y=70)
         label_nome = ctk.CTkLabel(self,text='Nome Completo', text_color=['#000','#fff'],font=('ariel',15)).place(x=90, y=150)
         entry_nome = ctk.CTkEntry(self, textvariable=nome_value,font=('ariel',20),width=480, placeholder_text='nome completo')
         entry_nome.place(x=90,y=180)

@@ -2,3 +2,6 @@ __pycache__/
 .venv/
 *bd
 __pycache__
+venv/
+*.pyc
+*.pyo

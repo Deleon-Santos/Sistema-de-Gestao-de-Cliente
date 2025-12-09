@@ -2,7 +2,7 @@ import re
 campos_nulos = []
 
 def validar_nome(nome):
-    if len(nome) > 10:
+    if len(nome) > 10 :
         return nome
     campos_nulos.append('nome')
     return False
@@ -10,7 +10,7 @@ def validar_nome(nome):
 def validar_idade(idade):
     try:
         idade=int(idade)
-        if idade >0 and idade < 110:
+        if idade >0 and idade < 100:
             return idade
         
     except ValueError:
@@ -18,10 +18,10 @@ def validar_idade(idade):
         return False
     
 def validar_rua(rua):
-    rua_valida = rua
-    rua_valida == True if rua!=None else campos_nulos.append('rua')
-    return rua_valida
-
+    if rua is not None:
+        return True
+    campos_nulos.append('rua')
+    return False
     
 def validar_genero(genero):
     try:
@@ -48,8 +48,7 @@ def validar_numero(numero):
 
 def validar_cep(cep):
     cep = str(cep).replace('-','')
-    if len(cep)==8 and cep.isdigit():
-        
+    if len(cep)==8 and cep.isdigit():   
         return 
     campos_nulos.append('cep')
     return False
@@ -101,8 +100,7 @@ def validacao(nome,idade,tel,genero,rua,numero,cep,email,bairro,cidade,uf):
     validar_cidade(cidade)
     validar_uf(uf)
     validar_tel(tel)
-    
-#validacao('Daniel Souza Santos',13, '1112345679','masculino', 'rua silva sales','2234', '12345-678', 'castor@gmail.com', 'saldade', ' sao franciasco','sp')
+
     if not campos_nulos:
         return True
     else:
